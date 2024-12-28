@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Integration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: bisque;
+        }
+        .post {
+            background-color: #f4f4f4;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        h3 {
+            color: #333;
+        }
+        h1{
+            text-align: center;
+        }
+        .text-footer 
+        {  
+            text-align: center;  
+            padding: 30px 0;  
+            font-family: 'Ubuntu,' sans-serif;  
+            display: flex;  
+            justify-content: center;  
+            color: white;  
+        }
+        .background
+         {  
+
+            background: black;  
+            background-blend-mode: darken;  
+            background-size cover;  
+        } 
+    </style>
+</head>
+<body><br>
+    <h1><u>Posts from Embedded JSON Data</u></h1>
+    <br>
+    <div id="posts-container">
+        <!-- Dynamic posts will be displayed here -->
+    </div>
+
+
+
+                             <!-- // Step 1: Define the JSON data -->
+
+    <script>
+       
+        const posts = [
+            {
+                "id": 1,
+                "title": "Sample Post 1",
+                "body": "This is the body of the first post."
+            },
+            {
+                "id": 2,
+                "title": "Sample Post 2",
+                "body": "This is the body of the second post."
+            },
+            {
+                "id": 3,
+                "title": "Sample Post 3",
+                "body": "This is the body of the third post."
+            }
+        ];
+
+                                    // Step 2: Create a function to display the posts in the DOM
+        function displayPosts(posts) {
+            const container = document.getElementById('posts-container');
+            container.innerHTML = '';  // Clear any existing content
+            
+            // Loop through the posts array and create HTML for each post
+            posts.forEach(post => {
+                const postElement = document.createElement('div');
+                postElement.classList.add('post');
+                
+                // Create and append the post title
+                const title = document.createElement('h3');
+                title.textContent = post.title;
+                postElement.appendChild(title);
+                
+                // Create and append the post body
+                const body = document.createElement('p');
+                body.textContent = post.body;
+                postElement.appendChild(body);
+                
+                // Append the post element to the container
+                container.appendChild(postElement);
+            });
+        }
+
+                                 // Step 3: Call the function to display posts after the page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            displayPosts(posts);  // Display the posts on the page
+        });
+    </script>
+
+<footer class="background">  
+    <p class="text-footer">  
+      @created by Sri Harshini 
+    </p>  
+</body>
+</html>
